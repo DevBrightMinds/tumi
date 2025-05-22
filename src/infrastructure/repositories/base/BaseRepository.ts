@@ -8,7 +8,7 @@ export class BaseRepository<T> implements IBaseRepository<T> {
 
     async getAll<T>(): Promise<AppResponse> {
         const response = await this._dbContext.DbCollection.find();
-        return { status: true, responseCode: 200, data: response, message: "" } as AppResponse;
+        return { status: true, responseCode: 200, data: response?.toArray, message: "" } as AppResponse;
     }
 
     async delete<T>(file: T): Promise<AppResponse> {
